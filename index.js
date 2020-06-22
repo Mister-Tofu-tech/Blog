@@ -6,7 +6,7 @@ const bodyParser = require('body-parser')
 const BlogPost = require('./models/BlogPost')
 
 const router = express.Router({strict: true});
-mongoose.connect('mongodb://localhost:27017/blog', {useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect('mongodb://localhost/jakin-nodejs-blog', {useNewUrlParser: true, useUnifiedTopology: true})
 app.use(express.static('public'))
 app.set('view engine','ejs')
 app.listen(4000, () => {
