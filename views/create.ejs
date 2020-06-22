@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('header') -%>
+
+<body>
+
+  <%- include('navbar') -%>
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('/img/contact-bg.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="page-heading">
+            <h1>Create New Post</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <!-- Contact Form - Enter your email address on line 19 of the mail/contact_me.php file to make this form work. -->
+        <!-- WARNING: Some web hosts do not allow emails to be sent through forms to common mail hosts like Gmail or Yahoo. It's recommended that you use a private domain email address! -->
+        <!-- To use the contact form, your site must be on a live web host with PHP! The form will not work locally! -->
+        <form name="sentMessage" action="/post/store" method="POST">
+          <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+              <label>Title</label>
+              <input type="text" class="form-control" placeholder="Title" id="title" name="title" required data-validation-required-message="Please enter the title.">
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+          <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+              <label>Description</label>
+              <textarea rows="10" class="form-control" id="body" name="body" required data-validation-required-message="Please enter the Body."></textarea>
+            </div>
+          </div>
+          <div id="success"></div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary" id="sendMessageButton">Send</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+  
+  <%- include('footer') -%>
+  <%- include('script') -%>
+
+</body>
+
+</html>
