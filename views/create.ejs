@@ -28,7 +28,7 @@
         <!-- Contact Form - Enter your email address on line 19 of the mail/contact_me.php file to make this form work. -->
         <!-- WARNING: Some web hosts do not allow emails to be sent through forms to common mail hosts like Gmail or Yahoo. It's recommended that you use a private domain email address! -->
         <!-- To use the contact form, your site must be on a live web host with PHP! The form will not work locally! -->
-        <form name="sentMessage" action="/post/store" method="POST">
+        <form name="sentMessage" action="/post/store" method="POST" enctype="multipart/form-data">
           <div class="control-group">
             <div class="form-group floating-label-form-group controls">
               <label>Title</label>
@@ -39,7 +39,13 @@
           <div class="control-group">
             <div class="form-group floating-label-form-group controls">
               <label>Description</label>
-              <textarea rows="10" class="form-control" id="body" name="body" required data-validation-required-message="Please enter the Body."></textarea>
+              <textarea rows="10" class="form-control" placeholder="Description" id="body" name="body" required data-validation-required-message="Please enter the Body."></textarea>
+            </div>
+          </div>
+          <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+              <label>Image</label>
+              <input type="file" class="form-control" id="image" name="image">
             </div>
           </div>
           <div id="success"></div>

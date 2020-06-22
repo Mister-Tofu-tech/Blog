@@ -1,12 +1,15 @@
 const express = require('express')
+const path = require('path')
 const app = new express()
 const ejs = require('ejs')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const BlogPost = require('./models/BlogPost')
+const fileUpload = require('express-fileupload')
+const { data } = require('jquery')
 
 const router = express.Router({strict: true});
-mongoose.connect('mongodb://localhost/jakin-nodejs-blog', {useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect('mongodb://localhost:27017/blog', {useNewUrlParser: true, useUnifiedTopology: true})
 app.use(express.static('public'))
 app.set('view engine','ejs')
 app.listen(4000, () => {
@@ -14,6 +17,16 @@ app.listen(4000, () => {
 })
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
+app.use(fileUpload())
+
+
+const validateMiddleWare = (req,res,next)=>{    
+    if(req.files == null || req.body.title == null || req.body.title == null){        
+        return res.redirect('/posts/new')
+    }    
+    next()
+}
+app.use('/post/store',validateMiddleWare);
 
 app.get('/', async (req, res) => {
     // res.sendFile(path.resolve(__dirname, 'public/index.html'))
@@ -31,20 +44,26 @@ app.get('/contact', (req, res) => {
     res.render('contact')
 })
 
-app.get('/post', (req, res) => {
-    //res.sendFile(path.resolve(__dirname, 'public/post.html'))
-    res.render('post')
+app.get('/post/:id', async (req, res) => {
+    const blogpost = await BlogPost.findById(req.params.id);
+    res.render('post', {blogpost});
 })
 
-app.get('/post/new', (req, res) => {
+app.get('/posts/new', (req, res) => {
     res.render('create');
 })
 
 app.post('/post/store', async (req, res) => {
-    var d = req.body;
-    d["date"] = new Date().toLocaleString();
-    console.log(d);
-    await BlogPost.create(req.body)
+    var data = {...req.body, date: new Date().toLocaleString()};
+    if(req.files){
+        let image = req.files.image;
+        image.mv(path.resolve(__dirname, 'public/img', image.name), async (error) => {
+            console.log(error);
+        });
+        data['image'] = '/img/' + image.name;
+        console.log(data);
+    }
+    await BlogPost.create(data);
     res.redirect('/')
 })
 
