@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('header') -%>
+
+  <body>
+    <%- include('navbar') -%>
+
+    <!-- Error Message -->
+    <div class="modal fade"></div>
+
+    <!-- Page Header -->
+    <header
+      class="masthead"
+      style="background-image: url('/img/register-bg.jpg');"
+    >
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="page-heading">
+              <h1>Login</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <!-- Contact Form - Enter your email address on line 19 of the mail/contact_me.php file to make this form work. -->
+          <!-- WARNING: Some web hosts do not allow emails to be sent through forms to common mail hosts like Gmail or Yahoo. It's recommended that you use a private domain email address! -->
+          <!-- To use the contact form, your site must be on a live web host with PHP! The form will not work locally! -->
+          <form
+            name="Login"
+            action="/user/login"
+            method="POST"
+            enctype="multipart/form-data"
+            onsubmit="return validatePassword()"
+          >
+            <div class="control-group">
+              <div class="form-group floating-label-form-group controls">
+                <label>User Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="User Name"
+                  id="username"
+                  name="username"
+                  required
+                  data-validation-required-message="Please enter your username."
+                />
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+            <div class="control-group">
+              <div class="form-group floating-label-form-group controls">
+                <label>Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  placeholder="Password"
+                  id="password"
+                  name="password"
+                  required
+                  data-validation-required-message="Please enter your password."
+                />
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+            <div class="control-group">
+              <div class="form-group floating-label-form-group controls">
+                <label>Confirm Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  placeholder="Confirm Password"
+                  id="confirm-password"
+                  name="confirm-password"
+                  required
+                  data-validation-required-message="Please match your password."
+                />
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+            <!-- <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+              <label>Image</label>
+              <input type="file" class="form-control" id="image" name="image">
+            </div>
+          </div> -->
+            <div id="success"></div>
+            <div class="end-section">
+              <div class="end-btn form-group">
+                <button
+                  type="submit"
+                  class="btn btn-primary float-right"
+                  id="Login"
+                >
+                  Login
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <hr />
+
+    <%- include('footer') -%> <%- include('script') -%>
+    <script>
+      function validatePassword() {
+        var pwd = document.getElementById("password").value;
+        var c_pwd = document.getElementById("confirm-password").value;
+        if (pwd != c_pwd) {
+          alert("Confirm Password must be the same as Password");
+          return false;
+        }
+        return true;
+      }
+    </script>
+  </body>
+</html>

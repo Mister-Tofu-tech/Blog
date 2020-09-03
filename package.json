@@ -30,6 +30,7 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "5.10.2",
+    "bcrypt": "^5.0.0",
     "body-parser": "^1.19.0",
     "bootstrap": "4.3.1",
     "dotenv": "^8.2.0",
@@ -39,6 +40,7 @@
     "firebase": "^7.15.3",
     "jquery": "^3.5.1",
     "mongoose": "^5.9.19",
+    "url": "^0.11.0",
     "xhr2": "^0.2.0",
     "xmlhttprequest": "^1.8.0"
   },
