@@ -26,9 +26,9 @@ const validateMiddleWare = (req, res, next) => {
   next();
 };
 app.use("/post/store", validateMiddleWare);
-// app.listen(5000, () => {
-//   console.log("App listening at 5000!!");
-// });
+app.listen(5000, () => {
+  console.log("App listening at 5000!!");
+});
 
 const homeController = require("./controllers/home");
 app.get("/", homeController.getAllPosts);
