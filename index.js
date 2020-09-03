@@ -13,9 +13,6 @@ mongoose.connect(process.env.MONGO_LINK, {
 mongoose.set("useCreateIndex", true);
 app.use(express.static("public"));
 app.set("view engine", "ejs");
-app.listen(4000, () => {
-  console.log("App listening on port 4000");
-});
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
