@@ -2,7 +2,6 @@ const bcrypt = require("bcrypt");
 const User = require("../models/User");
 
 exports.login = (req, res) => {
-  console.log(req.param.error);
   res.render("login");
 };
 
