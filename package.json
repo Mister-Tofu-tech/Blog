@@ -1,6 +1,6 @@
 {
   "title": "Clean Blog",
-  "name": "Jakin Blog",
+  "name": "jakin--blog",
   "version": "5.0.8",
   "engines": {
     "node": "10.x"
