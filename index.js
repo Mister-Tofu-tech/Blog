@@ -26,7 +26,7 @@ const validateMiddleWare = (req, res, next) => {
   next();
 };
 app.use("/post/store", validateMiddleWare);
-app.listen(5000, () => {
+app.listen(process.env.PORT || 5000, () => {
   console.log("App listening at 5000!!");
 });
 
